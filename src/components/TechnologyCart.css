@@ -1,0 +1,78 @@
+.tech-container {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 5.16rem;
+	row-gap: 2rem;
+}
+
+.tech {
+	width: 50rem;
+	text-align: left;
+	border: 1px solid #0000003a;;
+	border-radius: 8px;
+	padding: 0.5rem;
+}
+
+.tech-img {
+	width: 10%;
+	margin: 0 auto;
+}
+
+.tech p {
+	margin: 0 0 0.5rem;
+}
+
+/* .tech-footer{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+} */
+
+
+
+.tech-completed {
+	/* border-left: 4px solid #4caf50; */
+	background-color: #e8f5e9;
+}
+
+.tech-in-progress {
+	/* border-left: 4px solid #ff9800; */
+	background-color: #fff3e0;
+}
+
+.tech-not-started {
+	/* border-left: 4px solid #f44336; */
+	background-color: #ffebee;
+}
+
+/* Стили для бейджа статуса */
+.status-indicator {
+	margin: 10px 0;
+}
+
+.status-badge {
+	padding: 4px 8px;
+	border-radius: 12px;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+
+.status-completed {
+	background-color: #4caf50;
+	color: white;
+}
+
+.status-in-progress {
+	background-color: #ff9800;
+	color: white;
+}
+
+.status-not-started {
+	background-color: #f44336;
+	color: white;
+}
+
+.tech h3 {
+	color: #333;
+	margin-bottom: 8px;
+}
