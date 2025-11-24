@@ -1,0 +1,165 @@
+.technology-detail-page {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
+.page-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 2rem;
+}
+
+.header-actions {
+	display: flex;
+	gap: 1rem;
+}
+
+.technology-detail {
+	background: white;
+	padding: 2rem;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.detail-section {
+	margin-bottom: 2rem;
+	padding-bottom: 2rem;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-section:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
+.technology-category {
+	color: #666;
+	margin: 0.5rem 0;
+}
+
+.category-badge {
+	padding: 0.3rem 0.8rem;
+	border-radius: 15px;
+	font-size: 0.8em;
+	font-weight: 600;
+}
+
+.category-frontend {
+	background: #e3f2fd;
+	color: #1976d2;
+}
+
+.category-backend {
+	background: #f3e5f5;
+	color: #7b1fa2;
+}
+
+.category-other {
+	background: #e8f5e8;
+	color: #388e3c;
+}
+
+.technology-description {
+	font-size: 1.1em;
+	line-height: 1.6;
+	color: #333;
+}
+
+.status-display {
+	padding: 1rem;
+	border-radius: 8px;
+	font-weight: 600;
+	text-align: center;
+	transition: all 0.3s ease;
+}
+
+.status-display:hover {
+	transform: scale(1.02);
+}
+
+.status-completed {
+	background: #e8f5e8;
+	color: #2e7d32;
+}
+
+.status-in-progress {
+	background: #fff3e0;
+	color: #ef6c00;
+}
+
+.status-not-started {
+	background: #ffebee;
+	color: #c62828;
+}
+
+.click-hint {
+	font-size: 0.8em;
+	opacity: 0.7;
+	margin-left: 1rem;
+}
+
+.notes-textarea {
+	width: 100%;
+	padding: 1rem;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-family: inherit;
+	font-size: 1em;
+	resize: vertical;
+	min-height: 120px;
+}
+
+.notes-textarea:focus {
+	outline: none;
+	border-color: #667eea;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.notes-hint {
+	font-size: 0.8em;
+	color: #666;
+	margin-top: 0.5rem;
+	text-align: right;
+}
+
+.edit-form {
+	background: #f8f9fa;
+	padding: 1.5rem;
+	border-radius: 8px;
+}
+
+.edit-form .form-group {
+	margin-bottom: 1rem;
+}
+
+.edit-form label {
+	display: block;
+	margin-bottom: 0.5rem;
+	font-weight: 600;
+}
+
+.edit-form input,
+.edit-form textarea,
+.edit-form select {
+	width: 100%;
+	padding: 0.8rem;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 1em;
+}
+
+.form-actions {
+	display: flex;
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.not-found {
+	text-align: center;
+	padding: 3rem;
+	background: white;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

@@ -1,6 +1,7 @@
 import './ProgressHeader.css';
 
 function ProgressHeader({ technologies }) {
+  // Считаем статистику
   const total = technologies.length;
   const completed = technologies.filter(tech => tech.status === 'completed').length;
   const inProgress = technologies.filter(tech => tech.status === 'in-progress').length;
@@ -14,26 +15,27 @@ function ProgressHeader({ technologies }) {
       
       <div className="progress-stats">
         <div className="stat">
-          <span className="stat-number">{total}</span>
-          <span className="stat-label">Всего технологий</span>
+				  <span className="stat-number" style={{ color: "#fff"}}>{total}</span>
+          <span className="stat-label" style={{ color: "#fff"}}>Всего технологий</span>
         </div>
         
         <div className="stat">
-          <span className="stat-number">{completed}</span>
-          <span className="stat-label">Изучено</span>
+          <span className="stat-number" style={{ color: "#fff"}}>{completed}</span>
+          <span className="stat-label" style={{ color: "#04f50c"}}>Изучено</span>
         </div>
         
         <div className="stat">
-          <span className="stat-number">{inProgress}</span>
-          <span className="stat-label">В процессе</span>
+          <span className="stat-number" style={{ color: "#fff"}}>{inProgress}</span>
+          <span className="stat-label" style={{ color: "#ff9800"}}>В процессе</span>
         </div>
 
         <div className="stat">
-          <span className="stat-number">{notStarted}</span>
-          <span className="stat-label">Не начато</span>
+          <span className="stat-number" style={{ color: "#fff"}}>{notStarted}</span>
+          <span className="stat-label" style={{ color: "#ff6155"}}>Не начато</span>
         </div>
       </div>
 
+      {/* Прогресс-бар */}
       <div className="progress-bar-container">
         <div 
           className="progress-bar-fill"

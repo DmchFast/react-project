@@ -1,57 +1,218 @@
+.tech-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+	gap: 2rem;
+	padding: 1rem;
+}
+
 .tech {
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border-left: 4px solid transparent;
+	background: white;
+	border: 1px solid #e0e0e0;
+	border-radius: 12px;
+	padding: 0;
+	overflow: hidden;
+	transition: all 0.3s ease;
+	border-left: 5px solid transparent;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	animation: fadeIn 0.5s ease-in;
 }
 
 .tech:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .tech-completed {
-  border-left-color: #4caf50;
-  background-color: #e8f5e9;
+	border-left-color: #4caf50;
+	background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
 }
 
 .tech-in-progress {
-  border-left-color: #ff9800;
-  background-color: #fff3e0;
+	border-left-color: #ff9800;
+	background: linear-gradient(135deg, #fff3e0 0%, #ffffff 100%);
 }
 
 .tech-not-started {
-  border-left-color: #f44336;
-  background-color: #ffebee;
+	border-left-color: #f44336;
+	background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%);
 }
 
-.tech {
-  transition: all 0.5s ease;
+.tech-header {
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 15px;
+	border-bottom: 1px solid #f0f0f0;
 }
 
-.tech {
-  width: 300px;
-  text-align: left;
-  border: 1px solid #0000003a;
-  border-radius: 8px;
-  padding: 1rem;
-  margin: 10px;
+	.tech-main {
+	flex: 1;
+}
+
+.tech-img {
+	width: 50px;
+	height: 50px;
+	margin: 0 auto 15px auto;
+	display: block;
+	border-radius: 10px;
+	background: #f5f5f5;
+	padding: 8px;
 }
 
 .tech h3 {
-  color: #333;
-  margin-bottom: 8px;
-  font-size: 1.2em;
+	color: #333;
+	margin: 0 0 10px 0;
+	font-size: 1.3em;
+	font-weight: 700;
+	text-align: center;
 }
 
 .tech p {
-  margin: 0 0 0.5rem;
-  color: #666;
-  line-height: 1.4;
+	margin: 0 0 15px 0;
+	color: #666;
+	line-height: 1.5;
+	text-align: center;
+	font-size: 0.95em;
 }
 
-.tech-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+.tech-meta {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	align-items: center;
+	margin-top: 15px;
+}
+
+.category-badge {
+	padding: 4px 12px;
+	border-radius: 15px;
+	font-size: 0.75em;
+	font-weight: 600;
+	display: inline-block;
+}
+
+.category-frontend {
+	background: #e3f2fd;
+	color: #1976d2;
+}
+
+.category-backend {
+	background: #f3e5f5;
+	color: #7b1fa2;
+}
+
+.category-other {
+	background: #e8f5e8;
+	color: #388e3c;
+}
+
+.status-badge {
+	padding: 6px 12px;
+	border-radius: 15px;
+	font-size: 0.8em;
+	font-weight: 600;
+	display: inline-block;
+	border: none;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	min-width: 120px;
+}
+
+.status-badge:hover {
+	transform: scale(1.05);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.status-completed {
+	background-color: #4caf50;
+	color: white;
+}
+
+.status-in-progress {
+	background-color: #ff9800;
+	color: white;
+}
+
+.status-not-started {
+	background-color: #f44336;
+	color: white;
+}
+
+.tech-actions {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.btn-edit,
+.btn-delete {
+	background: none;
+	border: none;
+	font-size: 1.2em;
+	cursor: pointer;
+	padding: 8px;
+	border-radius: 6px;
+	transition: all 0.3s ease;
+}
+
+.btn-edit:hover {
+	background: #e3f2fd;
+	transform: scale(1.1);
+}
+
+.btn-delete:hover {
+	background: #ffebee;
+	transform: scale(1.1);
+}
+
+.notes-section {
+	padding: 20px;
+	background: rgba(255, 255, 255, 0.8);
+}
+
+.notes-section h4 {
+	margin: 0 0 12px 0;
+	color: #333;
+	font-size: 1em;
+	font-weight: 600;
+}
+
+.notes-textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	font-family: inherit;
+	font-size: 0.9em;
+	resize: vertical;
+	min-height: 80px;
+	transition: all 0.3s ease;
+	background: #fafafa;
+}
+
+.notes-textarea:focus {
+	outline: none;
+	border-color: #667eea;
+	box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+	background: white;
+}
+
+.notes-hint {
+	font-size: 0.8em;
+	color: #888;
+	margin-top: 8px;
+	text-align: right;
+	font-style: italic;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

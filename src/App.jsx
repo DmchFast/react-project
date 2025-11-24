@@ -1,52 +1,34 @@
-import { useState } from 'react'
-import TechnologyCard from './components/TechnologyCard.jsx';
-import ProgressHeader from './components/ProgressHeader.jsx';
-import './App.css'
-import { technologies as initialTechnologies } from './components/TechnologyCard.js';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import Home from './pages/Home';
+import TechnologyList from './pages/TechnologyList';
+import AddTechnology from './pages/AddTechnology';
+import Statistics from './pages/Statistics';
+import Settings from './pages/Settings';
+import './App.css';
+
+// Определяем базовый путь в зависимости от окружения
+const basename = import.meta.env.BASE_URL || '/';
 
 function App() {
-  const [technologies, setTechnologies] = useState(initialTechnologies);
-
-  const updateTechnologyStatus = (id) => {
-    setTechnologies(prevTech => 
-      prevTech.map(tech => {
-        if (tech.id === id) {
-          let newStatus;
-          if (tech.status === 'not-started') {
-            newStatus = 'in-progress';
-          } else if (tech.status === 'in-progress') {
-            newStatus = 'completed';
-          } else {
-            newStatus = 'not-started';
-          }
-          
-          return { ...tech, status: newStatus };
-        }
-        return tech;
-      })
-    );
-  };
-
   return (
-    <>
-      <h1>🚀 Трекер изучения технологий</h1>
-
-      <ProgressHeader technologies={technologies} />
-
-      <div className='tech-container'>
-        {technologies.map((tech) => (
-          <TechnologyCard 
-            key={tech.id}
-            id={tech.id}
-            title={tech.title}
-            description={tech.description}
-            status={tech.status}
-            onStatusChange={updateTechnologyStatus}
-          />
-        ))}
+    <Router basename={basename}>
+      <div className="App">
+        <Navigation />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/technologies" element={<TechnologyList />} />
+            <Route path="/add-technology" element={<AddTechnology />} />
+            <Route path="/statistics" element={<Statistics />} />
+            <Route path="/settings" element={<Settings />} />
+			{/* Маршрут для перенаправления */}
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
       </div>
-    </>
+    </Router>
   );
 }
 
-export default App
+export default App;
