@@ -1,78 +1,57 @@
-.tech-container {
-	display: flex;
-	flex-wrap: wrap;
-	column-gap: 5.16rem;
-	row-gap: 2rem;
-}
-
 .tech {
-	width: 50rem;
-	text-align: left;
-	border: 1px solid #0000003a;;
-	border-radius: 8px;
-	padding: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-left: 4px solid transparent;
 }
 
-.tech-img {
-	width: 10%;
-	margin: 0 auto;
+.tech:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
-
-.tech p {
-	margin: 0 0 0.5rem;
-}
-
-/* .tech-footer{
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-} */
-
-
 
 .tech-completed {
-	/* border-left: 4px solid #4caf50; */
-	background-color: #e8f5e9;
+  border-left-color: #4caf50;
+  background-color: #e8f5e9;
 }
 
 .tech-in-progress {
-	/* border-left: 4px solid #ff9800; */
-	background-color: #fff3e0;
+  border-left-color: #ff9800;
+  background-color: #fff3e0;
 }
 
 .tech-not-started {
-	/* border-left: 4px solid #f44336; */
-	background-color: #ffebee;
+  border-left-color: #f44336;
+  background-color: #ffebee;
 }
 
-/* Стили для бейджа статуса */
-.status-indicator {
-	margin: 10px 0;
+.tech {
+  transition: all 0.5s ease;
 }
 
-.status-badge {
-	padding: 4px 8px;
-	border-radius: 12px;
-	font-size: 0.8em;
-	font-weight: bold;
-}
-
-.status-completed {
-	background-color: #4caf50;
-	color: white;
-}
-
-.status-in-progress {
-	background-color: #ff9800;
-	color: white;
-}
-
-.status-not-started {
-	background-color: #f44336;
-	color: white;
+.tech {
+  width: 300px;
+  text-align: left;
+  border: 1px solid #0000003a;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 10px;
 }
 
 .tech h3 {
-	color: #333;
-	margin-bottom: 8px;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 1.2em;
+}
+
+.tech p {
+  margin: 0 0 0.5rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+.tech-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
 }
