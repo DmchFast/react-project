@@ -77,10 +77,7 @@ function TechnologyList() {
         <h1>📚 Все технологии</h1>
         <div className="header-actions">
           <Link to="/add-technology" className="btn btn-success">
-            ➕ Добавить технологию
-          </Link>
-          <Link to="/" className="btn btn-primary">
-            ← На главную
+            Добавить технологию
           </Link>
         </div>
       </div>
@@ -195,7 +192,7 @@ function TechnologyList() {
         <div className="no-results">
           {searchQuery || statusFilter !== 'all' ? (
             <>
-              <p>😔 По вашему запросу ничего не найдено</p>
+              <p>По вашему запросу ничего не найдено</p>
               <button 
                 onClick={() => { setSearchQuery(''); setStatusFilter('all'); }} 
                 className="clear-search"
@@ -208,7 +205,7 @@ function TechnologyList() {
               <p>📝 Технологий пока нет</p>
               <p>Начните добавлять технологии для отслеживания прогресса!</p>
               <Link to="/add-technology" className="btn btn-success">
-                ➕ Добавить первую технологию
+                Добавить первую технологию
               </Link>
             </>
           )}

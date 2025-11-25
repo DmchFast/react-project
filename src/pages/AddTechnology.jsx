@@ -47,9 +47,9 @@ function AddTechnology() {
   return (
     <div className="add-technology-page">
       <div className="page-header">
-        <h1>➕ Добавить технологию</h1>
+        <h1>Добавить технологию</h1>
         <button onClick={() => navigate('/technologies')} className="btn btn-primary">
-          ← Назад к списку
+          Назад
         </button>
       </div>
 
@@ -95,7 +95,7 @@ function AddTechnology() {
 
         <div className="form-actions">
           <button type="submit" className="btn btn-success">
-            ✅ Добавить технологию
+            Добавить технологию
           </button>
           <button 
             type="button" 

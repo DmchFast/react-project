@@ -1,4 +1,3 @@
-import reactLogo from '../assets/react.svg';
 import './TechnologyCart.css';
 
 function TechnologyCard({ 
@@ -47,7 +46,6 @@ function TechnologyCard({
     <div className={`tech tech-${status}`}>
       <div className="tech-header">
         <div className="tech-main">
-          <img className='tech-img' src={reactLogo} alt="logo" />
           <h3>{title}</h3>
           <p>{description}</p>
           

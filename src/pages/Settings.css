@@ -181,3 +181,35 @@
 	transform: translateY(-2px);
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.import-preview {
+	margin-top: 1rem;
+	padding: 1rem;
+	background: #f8f9fa;
+	border-radius: 8px;
+	border-left: 4px solid #2196F3;
+}
+
+.import-preview h4 {
+	margin: 0 0 0.5rem 0;
+	color: #333;
+}
+
+.preview-stats {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	margin-top: 0.5rem;
+}
+
+.preview-stats span {
+	background: white;
+	padding: 0.3rem 0.6rem;
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+
+.preview-error {
+	color: #f44336;
+	margin: 0;
+}

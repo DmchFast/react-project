@@ -152,84 +152,77 @@ function Settings() {
 
       {/* Модальные окна */}
       <Modal
-        isOpen={showResetModal}
-        onClose={() => setShowResetModal(false)}
-        title="Сброс прогресса"
-      >
-        <div className="modal-content">
-          <p>Вы уверены, что хотите сбросить прогресс всех технологий?</p>
-          <p>Это установит все статусы в "Не начато" и очистит заметки.</p>
-          <div className="modal-actions">
-            <button onClick={handleResetAll} className="btn btn-warning">
-              Да, сбросить
-            </button>
-            <button onClick={() => setShowResetModal(false)} className="btn">
-              Отмена
-            </button>
+  isOpen={showImportModal}
+  onClose={() => setShowImportModal(false)}
+  title="Импорт данных"
+>
+  <div className="modal-content">
+    <p>Импортируйте данные из файла резервной копии или вставьте JSON данные:</p>
+    
+    <div className="import-options">
+      <div className="file-import">
+        <label className="file-input-label">
+          📁 Выберите файл
+          <input 
+            type="file" 
+            accept=".json" 
+            onChange={handleFileImport}
+            className="file-input"
+          />
+        </label>
+      </div>
+      
+      <div className="text-import">
+        <p>Или вставьте JSON данные:</p>
+        <textarea
+          value={importData}
+          onChange={(e) => setImportData(e.target.value)}
+          placeholder="Вставьте сюда JSON данные..."
+          rows="6"
+          className="import-textarea"
+        />
+      </div>
+
+      {/* Предпросмотр импортируемых данных */}
+      {importData && (
+        <div className="import-preview">
+          <h4>Предпросмотр:</h4>
+          <div className="preview-content">
+            {(() => {
+              try {
+                const parsed = JSON.parse(importData);
+                if (parsed.technologies && Array.isArray(parsed.technologies)) {
+                  return (
+                    <div>
+                      <p>Будет импортировано: {parsed.technologies.length} технологий</p>
+                      <div className="preview-stats">
+                        <span>✅ Изучено: {parsed.technologies.filter(t => t.status === 'completed').length}</span>
+                        <span>🔄 В процессе: {parsed.technologies.filter(t => t.status === 'in-progress').length}</span>
+                        <span>⏳ Не начато: {parsed.technologies.filter(t => t.status === 'not-started').length}</span>
+                      </div>
+                    </div>
+                  );
+                }
+                return <p className="preview-error">Неверный формат данных</p>;
+              } catch (e) {
+                return <p className="preview-error">Ошибка в формате JSON</p>;
+              }
+            })()}
           </div>
         </div>
-      </Modal>
+      )}
+    </div>
 
-      <Modal
-        isOpen={showExportModal}
-        onClose={() => setShowExportModal(false)}
-        title="Экспорт данных"
-      >
-        <div className="modal-export-content">
-          <p>✅ Данные успешно экспортированы!</p>
-          <p>Файл был скачан автоматически.</p>
-          <button 
-            onClick={() => setShowExportModal(false)}
-            className="btn btn-primary modal-btn"
-          >
-            Закрыть
-          </button>
-        </div>
-      </Modal>
-
-      <Modal
-        isOpen={showImportModal}
-        onClose={() => setShowImportModal(false)}
-        title="Импорт данных"
-      >
-        <div className="modal-content">
-          <p>Импортируйте данные из файла резервной копии:</p>
-          
-          <div className="import-options">
-            <div className="file-import">
-              <label className="file-input-label">
-                📁 Выберите файл
-                <input 
-                  type="file" 
-                  accept=".json" 
-                  onChange={handleFileImport}
-                  className="file-input"
-                />
-              </label>
-            </div>
-            
-            <div className="text-import">
-              <p>Или вставьте JSON данные:</p>
-              <textarea
-                value={importData}
-                onChange={(e) => setImportData(e.target.value)}
-                placeholder="Вставьте сюда JSON данные..."
-                rows="6"
-                className="import-textarea"
-              />
-            </div>
-          </div>
-
-          <div className="modal-actions">
-            <button onClick={handleImport} className="btn btn-success" disabled={!importData}>
-              Импортировать
-            </button>
-            <button onClick={() => setShowImportModal(false)} className="btn">
-              Отмена
-            </button>
-          </div>
-        </div>
-      </Modal>
+    <div className="modal-actions">
+      <button onClick={handleImport} className="btn btn-success" disabled={!importData}>
+        Импортировать
+      </button>
+      <button onClick={() => setShowImportModal(false)} className="btn">
+        Отмена
+      </button>
+    </div>
+  </div>
+</Modal>
     </div>
   );
 }

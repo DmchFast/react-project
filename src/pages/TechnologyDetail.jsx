@@ -76,7 +76,7 @@ function TechnologyDetail() {
       <div className="technology-detail-page">
         <div className="page-header">
           <Link to="/technologies" className="btn btn-primary">
-            ← Назад к списку
+            Назад
           </Link>
           <h1>Технология не найдена</h1>
         </div>
@@ -91,7 +91,7 @@ function TechnologyDetail() {
     <div className="technology-detail-page">
       <div className="page-header">
         <Link to="/technologies" className="btn btn-primary">
-          ← Назад к списку
+          Назад
         </Link>
         <div className="header-actions">
           <button onClick={handleEdit} className="btn btn-info">
@@ -135,7 +135,7 @@ function TechnologyDetail() {
             </div>
             <div className="form-actions">
               <button onClick={handleSave} className="btn btn-success">
-                💾 Сохранить
+                Сохранить
               </button>
               <button onClick={handleCancel} className="btn">
                 Отмена

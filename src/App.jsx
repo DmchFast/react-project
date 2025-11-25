@@ -3,6 +3,7 @@ import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import TechnologyList from './pages/TechnologyList';
 import AddTechnology from './pages/AddTechnology';
+import ImportFromAPI from './pages/ImportFromAPI';
 import Statistics from './pages/Statistics';
 import Settings from './pages/Settings';
 import './App.css';
@@ -20,9 +21,10 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/technologies" element={<TechnologyList />} />
             <Route path="/add-technology" element={<AddTechnology />} />
+            <Route path="/import-api" element={<ImportFromAPI />} />
             <Route path="/statistics" element={<Statistics />} />
             <Route path="/settings" element={<Settings />} />
-			{/* Маршрут для перенаправления */}
+            {/* Маршрут для перенаправления */}
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </main>

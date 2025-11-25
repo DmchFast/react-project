@@ -18,13 +18,13 @@ function Home() {
   return (
     <div className="home-page">
       <div className="welcome-section">
-        <h1>Добро пожаловать в Трекер технологий! 🎯</h1>
+        <h1>Добро пожаловать в Трекер технологий!</h1>
         <p>Отслеживайте ваш прогресс в изучении современных технологий разработки</p>
       </div>
 
       <div className="quick-overview">
         <div className="overview-card">
-          <h3>📊 Общий прогресс</h3>
+          <h3>🗃️ Общий прогресс</h3>
           <div className="home-progress-bar">
             <ProgressBar
               progress={progress}
@@ -47,11 +47,11 @@ function Home() {
           </div>
           <div className="stat-card">
             <div className="stat-number">{completedCount}</div>
-            <div className="stat-label">Изучено</div>
+            <div className="stat-label" style={{ color: "#04f50c"}}>Изучено</div>
           </div>
           <div className="stat-card">
             <div className="stat-number">{inProgressCount}</div>
-            <div className="stat-label">В процессе</div>
+            <div className="stat-label" style={{ color: "#ff9800"}}>В процессе</div>
           </div>
         </div>
       </div>
@@ -63,13 +63,16 @@ function Home() {
       />
 
       <div className="action-links">
-        <Link to="/technologies" className="action-link">
-          📚 Посмотреть все технологии
-        </Link>
-        <Link to="/statistics" className="action-link">
-          📈 Анализировать прогресс
-        </Link>
-      </div>
+  <Link to="/technologies" className="action-link">
+    📚 Посмотреть все технологии
+  </Link>
+  <Link to="/import-api" className="action-link">
+    🌐 Импорт из API
+  </Link>
+  <Link to="/statistics" className="action-link">
+    📈 Анализировать прогресс
+  </Link>
+       </div>
     </div>
   );
 }

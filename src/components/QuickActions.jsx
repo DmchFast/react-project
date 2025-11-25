@@ -30,10 +30,10 @@ function QuickActions({ onMarkAllCompleted, onResetAll, technologies }) {
       <h3>⚡ Быстрые действия</h3>
       <div className="action-buttons">
         <button onClick={onMarkAllCompleted} className="btn btn-success">
-          ☑ Отметить все как выполненные
+          ✅ Отметить все как выполненные
         </button>
         <button onClick={onResetAll} className="btn btn-warning">
-          ↻ Сбросить все статусы
+          🔄 Сбросить все статусы
         </button>
         <button onClick={handleExport} className="btn btn-info">
           📤 Экспорт данных
