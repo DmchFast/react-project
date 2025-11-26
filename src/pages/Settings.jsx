@@ -9,6 +9,7 @@ function Settings() {
   const [showExportModal, setShowExportModal] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
   const [importData, setImportData] = useState('');
+  const [importError, setImportError] = useState('');
 
   const handleResetAll = () => {
     setTechnologies(prev => 
@@ -43,16 +44,27 @@ function Settings() {
       const importedData = JSON.parse(importData);
       
       if (!importedData.technologies || !Array.isArray(importedData.technologies)) {
-        alert('Неверный формат файла. Убедитесь, что файл был экспортирован из этого приложения.');
+        setImportError('Неверный формат файла. Убедитесь, что файл был экспортирован из этого приложения.');
+        return;
+      }
+
+      // Валидация импортируемых данных
+      const isValidData = importedData.technologies.every(tech => 
+        tech.id && tech.title && tech.category && tech.status
+      );
+
+      if (!isValidData) {
+        setImportError('Файл содержит некорректные данные. Проверьте структуру файла.');
         return;
       }
 
       setTechnologies(importedData.technologies);
       setShowImportModal(false);
       setImportData('');
+      setImportError('');
       alert('Данные успешно импортированы!');
     } catch (error) {
-      alert('Ошибка при импорте данных. Проверьте формат файла.');
+      setImportError('Ошибка при импорте данных. Проверьте формат JSON файла.');
     }
   };
 
@@ -60,9 +72,19 @@ function Settings() {
     const file = event.target.files[0];
     if (!file) return;
 
+    // Проверка типа файла
+    if (!file.name.endsWith('.json')) {
+      setImportError('Пожалуйста, выберите JSON файл.');
+      return;
+    }
+
     const reader = new FileReader();
     reader.onload = (e) => {
       setImportData(e.target.result);
+      setImportError('');
+    };
+    reader.onerror = () => {
+      setImportError('Ошибка чтения файла.');
     };
     reader.readAsText(file);
   };
@@ -143,7 +165,7 @@ function Settings() {
           <div className="about-info">
             <p><strong>Трекер технологий</strong> - приложение для отслеживания прогресса изучения технологий разработки.</p>
             <div className="version-info">
-              <span>Версия: 1.0.0</span>
+              <span>Версия: 1.1.0</span>
               <span>React + Vite</span>
             </div>
           </div>
@@ -152,77 +174,131 @@ function Settings() {
 
       {/* Модальные окна */}
       <Modal
-  isOpen={showImportModal}
-  onClose={() => setShowImportModal(false)}
-  title="Импорт данных"
->
-  <div className="modal-content">
-    <p>Импортируйте данные из файла резервной копии или вставьте JSON данные:</p>
-    
-    <div className="import-options">
-      <div className="file-import">
-        <label className="file-input-label">
-          📁 Выберите файл
-          <input 
-            type="file" 
-            accept=".json" 
-            onChange={handleFileImport}
-            className="file-input"
-          />
-        </label>
-      </div>
-      
-      <div className="text-import">
-        <p>Или вставьте JSON данные:</p>
-        <textarea
-          value={importData}
-          onChange={(e) => setImportData(e.target.value)}
-          placeholder="Вставьте сюда JSON данные..."
-          rows="6"
-          className="import-textarea"
-        />
-      </div>
+        isOpen={showImportModal}
+        onClose={() => {
+          setShowImportModal(false);
+          setImportError('');
+          setImportData('');
+        }}
+        title="Импорт данных"
+      >
+        <div className="modal-content">
+          <p>Импортируйте данные из файла резервной копии или вставьте JSON данные:</p>
+          
+          {importError && (
+            <div className="error-message">
+              {importError}
+            </div>
+          )}
+          
+          <div className="import-options">
+            <div className="file-import">
+              <label className="file-input-label">
+                📁 Выберите файл
+                <input 
+                  type="file" 
+                  accept=".json" 
+                  onChange={handleFileImport}
+                  className="file-input"
+                />
+              </label>
+            </div>
+            
+            <div className="text-import">
+              <p>Или вставьте JSON данные:</p>
+              <textarea
+                value={importData}
+                onChange={(e) => setImportData(e.target.value)}
+                placeholder="Вставьте сюда JSON данные..."
+                rows="6"
+                className="import-textarea"
+              />
+            </div>
 
-      {/* Предпросмотр импортируемых данных */}
-      {importData && (
-        <div className="import-preview">
-          <h4>Предпросмотр:</h4>
-          <div className="preview-content">
-            {(() => {
-              try {
-                const parsed = JSON.parse(importData);
-                if (parsed.technologies && Array.isArray(parsed.technologies)) {
-                  return (
-                    <div>
-                      <p>Будет импортировано: {parsed.technologies.length} технологий</p>
-                      <div className="preview-stats">
-                        <span>✅ Изучено: {parsed.technologies.filter(t => t.status === 'completed').length}</span>
-                        <span>🔄 В процессе: {parsed.technologies.filter(t => t.status === 'in-progress').length}</span>
-                        <span>⏳ Не начато: {parsed.technologies.filter(t => t.status === 'not-started').length}</span>
-                      </div>
-                    </div>
-                  );
-                }
-                return <p className="preview-error">Неверный формат данных</p>;
-              } catch (e) {
-                return <p className="preview-error">Ошибка в формате JSON</p>;
-              }
-            })()}
+            {/* Предпросмотр импортируемых данных */}
+            {importData && (
+              <div className="import-preview">
+                <h4>Предпросмотр:</h4>
+                <div className="preview-content">
+                  {(() => {
+                    try {
+                      const parsed = JSON.parse(importData);
+                      if (parsed.technologies && Array.isArray(parsed.technologies)) {
+                        return (
+                          <div>
+                            <p>Будет импортировано: {parsed.technologies.length} технологий</p>
+                            <div className="preview-stats">
+                              <span>✅ Изучено: {parsed.technologies.filter(t => t.status === 'completed').length}</span>
+                              <span>🔄 В процессе: {parsed.technologies.filter(t => t.status === 'in-progress').length}</span>
+                              <span>⏳ Не начато: {parsed.technologies.filter(t => t.status === 'not-started').length}</span>
+                            </div>
+                          </div>
+                        );
+                      }
+                      return <p className="preview-error">Неверный формат данных</p>;
+                    } catch (e) {
+                      return <p className="preview-error">Ошибка в формате JSON</p>;
+                    }
+                  })()}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="modal-actions">
+            <button onClick={handleImport} className="btn btn-success" disabled={!importData}>
+              Импортировать
+            </button>
+            <button onClick={() => {
+              setShowImportModal(false);
+              setImportError('');
+              setImportData('');
+            }} className="btn">
+              Отмена
+            </button>
           </div>
         </div>
-      )}
-    </div>
+      </Modal>
 
-    <div className="modal-actions">
-      <button onClick={handleImport} className="btn btn-success" disabled={!importData}>
-        Импортировать
-      </button>
-      <button onClick={() => setShowImportModal(false)} className="btn">
-        Отмена
-      </button>
-    </div>
-  </div>
-</Modal>
+      <Modal
+        isOpen={showExportModal}
+        onClose={() => setShowExportModal(false)}
+        title="Экспорт данных"
+      >
+        <div className="modal-export-content">
+          <p>✅ Данные успешно экспортированы!</p>
+          <p>Файл был скачан автоматически.</p>
+          <div className="export-info">
+            <p>Формат файла: <code>tech-tracker-backup-[timestamp].json</code></p>
+            <p>Содержит: {technologies.length} технологий</p>
+          </div>
+          <button 
+            onClick={() => setShowExportModal(false)}
+            className="btn btn-primary modal-btn"
+          >
+            Закрыть
+          </button>
+        </div>
+      </Modal>
+
+      <Modal
+        isOpen={showResetModal}
+        onClose={() => setShowResetModal(false)}
+        title="Сброс прогресса"
+      >
+        <div className="modal-content">
+          <p>Вы уверены, что хотите сбросить прогресс всех технологий?</p>
+          <p>Все статусы будут установлены в "Не начато", а заметки очищены.</p>
+          <div className="modal-actions">
+            <button onClick={handleResetAll} className="btn btn-warning">
+              Сбросить прогресс
+            </button>
+            <button onClick={() => setShowResetModal(false)} className="btn">
+              Отмена
+            </button>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 }

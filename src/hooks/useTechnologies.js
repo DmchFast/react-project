@@ -21,19 +21,24 @@ const initialTechnologies = [
 function useTechnologies() {
   const [technologies, setTechnologies] = useLocalStorage('technologies', initialTechnologies);
 
-  const updateStatus = (techId) => {
+  const updateStatus = (techId, newStatus = null) => {
     setTechnologies(prev =>
       prev.map(tech => {
         if (tech.id === techId) {
-          let newStatus;
-          if (tech.status === 'not-started') {
-            newStatus = 'in-progress';
-          } else if (tech.status === 'in-progress') {
-            newStatus = 'completed';
+          let status;
+          if (newStatus) {
+            status = newStatus;
           } else {
-            newStatus = 'not-started';
+            // Циклическое изменение статуса
+            if (tech.status === 'not-started') {
+              status = 'in-progress';
+            } else if (tech.status === 'in-progress') {
+              status = 'completed';
+            } else {
+              status = 'not-started';
+            }
           }
-          return { ...tech, status: newStatus };
+          return { ...tech, status };
         }
         return tech;
       })

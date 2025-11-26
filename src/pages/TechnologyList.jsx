@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import TechnologyCard from '../components/TechnologyCard';
 import ProgressHeader from '../components/ProgressHeader';
+import StatusEditor from '../components/StatusEditor';
 import useTechnologies from '../hooks/useTechnologies';
 import './TechnologyList.css';
 
@@ -17,6 +18,7 @@ function TechnologyList() {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [editingTech, setEditingTech] = useState(null);
+  const [showBulkEditor, setShowBulkEditor] = useState(false);
   const [editForm, setEditForm] = useState({
     title: '',
     description: '',
@@ -71,11 +73,21 @@ function TechnologyList() {
     deleteTechnology(techId);
   };
 
+  const handleBulkStatusUpdate = (techId, newStatus) => {
+    updateStatus(techId, newStatus);
+  };
+
   return (
     <div className="technology-list-page">
       <div className="page-header">
         <h1>📚 Все технологии</h1>
         <div className="header-actions">
+          <button 
+            onClick={() => setShowBulkEditor(true)}
+            className="btn btn-warning"
+          >
+            Массовое редактирование
+          </button>
           <Link to="/add-technology" className="btn btn-success">
             Добавить технологию
           </Link>
@@ -160,7 +172,7 @@ function TechnologyList() {
             </div>
             <div className="form-actions">
               <button onClick={handleSaveEdit} className="btn btn-success">
-                💾 Сохранить
+                Сохранить
               </button>
               <button onClick={handleCancelEdit} className="btn">
                 Отмена
@@ -168,6 +180,15 @@ function TechnologyList() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* Массовый редактор статусов */}
+      {showBulkEditor && (
+        <StatusEditor
+          technologies={technologies}
+          onUpdateStatus={handleBulkStatusUpdate}
+          onClose={() => setShowBulkEditor(false)}
+        />
       )}
 
       <div className='tech-grid'>
