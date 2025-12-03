@@ -6,7 +6,7 @@ import StatusEditor from '../components/StatusEditor';
 import useTechnologies from '../hooks/useTechnologies';
 import './TechnologyList.css';
 
-function TechnologyList() {
+function TechnologyList({ showNotification }) {
   const { 
     technologies, 
     updateStatus, 
@@ -61,6 +61,7 @@ function TechnologyList() {
       setTechnologies(updatedTechnologies);
       setEditingTech(null);
       setEditForm({ title: '', description: '', category: 'frontend' });
+      showNotification('Технология успешно обновлена!', 'success');
     }
   };
 
@@ -70,7 +71,9 @@ function TechnologyList() {
   };
 
   const handleDelete = (techId) => {
+    const tech = technologies.find(t => t.id === techId);
     deleteTechnology(techId);
+    showNotification(`Технология "${tech.title}" удалена`, 'warning');
   };
 
   const handleBulkStatusUpdate = (techId, newStatus) => {

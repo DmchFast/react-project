@@ -142,11 +142,6 @@
 	transition: transform 0.3s ease;
 }
 
-.category-card:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-}
-
 .category-card h3 {
 	margin: 0 0 1.2rem 0;
 	color: #333;
@@ -198,11 +193,6 @@
 	transition: transform 0.3s ease;
 }
 
-.insight-card:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
-}
-
 .insight-card h4 {
 	margin: 0 0 1rem 0;
 	color: #333;
@@ -226,4 +216,116 @@
 	background: rgba(0, 0, 0, 0.03);
 	border-radius: 5px;
 	font-weight: 500;
+}
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 1024px) {
+  .stats-overview {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .stats-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .statistics-page {
+    padding: 1rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.8em;
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .category-stats,
+  .completion-insights {
+    padding: 1.5rem;
+  }
+  
+  .categories-grid,
+  .insights-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .main-stat {
+    padding: 2rem 1rem;
+  }
+  
+  .circle-progress {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .circle-progress::before {
+    width: 90px;
+    height: 90px;
+  }
+  
+  .circle-progress span {
+    font-size: 1.5em;
+  }
+  
+  .category-details {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .statistics-page {
+    padding: 0.5rem;
+  }
+  
+  .page-header h1 {
+    font-size: 1.5em;
+  }
+  
+  .category-stats h2,
+  .completion-insights h2 {
+    font-size: 1.3em;
+    margin-bottom: 1.5rem;
+  }
+  
+  .category-card,
+  .insight-card {
+    padding: 1.2rem;
+  }
+  
+  .stat-number {
+    font-size: 2em;
+  }
+  
+  .circle-progress {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .circle-progress::before {
+    width: 75px;
+    height: 75px;
+  }
+  
+  .circle-progress span {
+    font-size: 1.2em;
+  }
 }

@@ -72,3 +72,30 @@ body {
 	transform: translateY(-2px);
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 1200px) {
+  .btn {
+    padding: 10px 16px;
+    font-size: 0.9em;
+    min-width: 110px;
+  }
+}
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.85em;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    padding: 6px 12px;
+    font-size: 0.8em;
+    min-width: 90px;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

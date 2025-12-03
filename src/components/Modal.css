@@ -80,3 +80,65 @@
 	transform: translateY(-2px);
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 768px) {
+  .modal-background {
+    padding: 0.5rem;
+  }
+  
+  .modal-window {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .modal-header {
+    padding: 14px 16px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.2rem;
+  }
+  
+  .modal-content {
+    padding: 16px;
+  }
+  
+  .modal-content p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-background {
+    padding: 0.25rem;
+  }
+  
+  .modal-window {
+    width: 98%;
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: 12px 14px;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.1rem;
+  }
+  
+  .modal-content {
+    padding: 14px;
+  }
+  
+  .modal-content p {
+    font-size: 0.9rem;
+  }
+  
+  .modal-content .btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}

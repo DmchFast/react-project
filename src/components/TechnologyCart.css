@@ -206,3 +206,86 @@
 		transform: translateY(0);
 	}
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 1024px) {
+  .tech-container {
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .tech-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+  
+  .tech-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 15px;
+  }
+  
+  .tech-actions {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .tech h3 {
+    font-size: 1.2em;
+  }
+  
+  .tech p {
+    font-size: 0.9em;
+  }
+  
+  .tech-meta {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .notes-section {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tech-container {
+    padding: 0.25rem;
+  }
+  
+  .tech {
+    margin: 0.5rem 0;
+  }
+  
+  .tech-header {
+    padding: 12px;
+  }
+  
+  .notes-section {
+    padding: 12px;
+  }
+  
+  .notes-textarea {
+    padding: 10px;
+    font-size: 0.85em;
+    min-height: 70px;
+  }
+  
+  .status-badge {
+    min-width: 100px;
+    font-size: 0.75em;
+    padding: 5px 10px;
+  }
+  
+  .category-badge {
+    font-size: 0.7em;
+    padding: 3px 8px;
+  }
+}

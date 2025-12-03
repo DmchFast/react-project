@@ -4,7 +4,7 @@ import QuickActions from '../components/QuickActions';
 import useTechnologies from '../hooks/useTechnologies';
 import './Home.css';
 
-function Home() {
+function Home({ showNotification }) {
   const { 
     technologies, 
     markAllCompleted, 
@@ -14,6 +14,16 @@ function Home() {
 
   const completedCount = technologies.filter(tech => tech.status === 'completed').length;
   const inProgressCount = technologies.filter(tech => tech.status === 'in-progress').length;
+
+  const handleMarkAllCompleted = () => {
+    markAllCompleted();
+    showNotification('Все технологии отмечены как изученные! 🎉', 'success');
+  };
+
+  const handleResetAll = () => {
+    resetAllStatuses();
+    showNotification('Прогресс всех технологий сброшен', 'warning');
+  };
 
   return (
     <div className="home-page">
@@ -57,22 +67,22 @@ function Home() {
       </div>
 
       <QuickActions
-        onMarkAllCompleted={markAllCompleted}
-        onResetAll={resetAllStatuses}
+        onMarkAllCompleted={handleMarkAllCompleted}
+        onResetAll={handleResetAll}
         technologies={technologies}
       />
 
       <div className="action-links">
-  <Link to="/technologies" className="action-link">
-    📚 Посмотреть все технологии
-  </Link>
-  <Link to="/import-api" className="action-link">
-    🌐 Импорт из API
-  </Link>
-  <Link to="/statistics" className="action-link">
-    📈 Анализировать прогресс
-  </Link>
-       </div>
+        <Link to="/technologies" className="action-link">
+          📚 Посмотреть все технологии
+        </Link>
+        <Link to="/import-api" className="action-link">
+          🌐 Импорт из API
+        </Link>
+        <Link to="/statistics" className="action-link">
+          📈 Анализировать прогресс
+        </Link>
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ showNotification }) {
   const location = useLocation();
 
   return (

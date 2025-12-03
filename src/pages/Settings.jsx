@@ -3,7 +3,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import Modal from '../components/Modal';
 import './Settings.css';
 
-function Settings() {
+function Settings({ showNotification }) {
   const [technologies, setTechnologies] = useLocalStorage('technologies', []);
   const [showResetModal, setShowResetModal] = useState(false);
   const [showExportModal, setShowExportModal] = useState(false);
@@ -16,6 +16,7 @@ function Settings() {
       prev.map(tech => ({ ...tech, status: 'not-started', notes: '' }))
     );
     setShowResetModal(false);
+    showNotification('Прогресс всех технологий сброшен', 'info');
   };
 
   const handleExport = () => {
@@ -37,6 +38,7 @@ function Settings() {
     URL.revokeObjectURL(url);
     
     setShowExportModal(true);
+    showNotification('Данные успешно экспортированы!', 'success');
   };
 
   const handleImport = () => {
@@ -45,6 +47,7 @@ function Settings() {
       
       if (!importedData.technologies || !Array.isArray(importedData.technologies)) {
         setImportError('Неверный формат файла. Убедитесь, что файл был экспортирован из этого приложения.');
+        showNotification('Ошибка при импорте данных', 'error');
         return;
       }
 
@@ -55,6 +58,7 @@ function Settings() {
 
       if (!isValidData) {
         setImportError('Файл содержит некорректные данные. Проверьте структуру файла.');
+        showNotification('Ошибка при импорте данных', 'error');
         return;
       }
 
@@ -62,9 +66,10 @@ function Settings() {
       setShowImportModal(false);
       setImportData('');
       setImportError('');
-      alert('Данные успешно импортированы!');
+      showNotification('Данные успешно импортированы!', 'success');
     } catch (error) {
       setImportError('Ошибка при импорте данных. Проверьте формат JSON файла.');
+      showNotification('Ошибка при импорте данных', 'error');
     }
   };
 
@@ -75,6 +80,7 @@ function Settings() {
     // Проверка типа файла
     if (!file.name.endsWith('.json')) {
       setImportError('Пожалуйста, выберите JSON файл.');
+      showNotification('Ошибка: выберите JSON файл', 'error');
       return;
     }
 
@@ -85,6 +91,7 @@ function Settings() {
     };
     reader.onerror = () => {
       setImportError('Ошибка чтения файла.');
+      showNotification('Ошибка чтения файла', 'error');
     };
     reader.readAsText(file);
   };
@@ -92,6 +99,7 @@ function Settings() {
   const clearAllData = () => {
     if (window.confirm('Вы уверены, что хотите полностью очистить все данные? Это действие нельзя отменить.')) {
       setTechnologies([]);
+      showNotification('Все данные очищены', 'warning');
     }
   };
 

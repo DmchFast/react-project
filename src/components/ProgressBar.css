@@ -43,3 +43,42 @@
 .progress-bar-inner.animated {
 	transition: width 0.5s ease-in-out;
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 768px) {
+  .progress-bar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .progress-label {
+    font-size: 0.9rem;
+  }
+  
+  .progress-percentage {
+    font-size: 0.9rem;
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .progress-bar-container {
+    margin: 10px 0;
+  }
+  
+  .progress-bar-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .progress-label {
+    font-size: 0.85rem;
+  }
+  
+  .progress-percentage {
+    font-size: 0.85rem;
+    padding: 0.15rem 0.5rem;
+  }
+}

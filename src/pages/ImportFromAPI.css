@@ -256,3 +256,94 @@
 .tech-link a:hover {
 	color: #667eea;
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 1024px) {
+  .technologies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .import-api-page {
+    padding: 1rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .import-api-content {
+    padding: 1.5rem;
+  }
+  
+  .search-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .search-input {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .technologies-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .tech-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .tech-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .import-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .selection-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .import-api-page {
+    padding: 0.5rem;
+  }
+  
+  .import-api-content {
+    padding: 1rem;
+  }
+  
+  .tech-card {
+    padding: 1rem;
+  }
+  
+  .tech-header h3 {
+    font-size: 1.1em;
+  }
+  
+  .tech-description {
+    font-size: 0.9em;
+  }
+  
+  .empty-state {
+    padding: 2rem 1rem;
+  }
+  
+  .empty-state h3 {
+    font-size: 1.2em;
+  }
+}

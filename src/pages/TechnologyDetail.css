@@ -163,3 +163,52 @@
 	border-radius: 12px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 768px) {
+  .technology-detail-page {
+    padding: 1rem;
+  }
+  
+  .page-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .header-actions {
+    justify-content: center;
+  }
+  
+  .technology-detail {
+    padding: 1.5rem;
+  }
+  
+  .click-hint {
+    display: block;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .form-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .technology-detail-page {
+    padding: 0.5rem;
+  }
+  
+  .technology-detail {
+    padding: 1rem;
+  }
+  
+  .detail-section {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}

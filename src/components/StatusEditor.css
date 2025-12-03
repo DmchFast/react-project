@@ -199,3 +199,92 @@
     outline: 2px solid #667eea;
     outline-offset: 2px;
 }
+
+/* Адаптивные медиа-запросы */
+@media (max-width: 768px) {
+  .bulk-editor-modal {
+    padding: 0.5rem;
+  }
+  
+  .bulk-editor-content {
+    width: 95%;
+    max-height: 90vh;
+  }
+  
+  .bulk-editor-header {
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .bulk-editor-header h2 {
+    font-size: 1.2em;
+  }
+  
+  .bulk-editor-body {
+    padding: 1.5rem;
+  }
+  
+  .list-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  
+  .tech-select-label {
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+  
+  .bulk-editor-actions {
+    flex-direction: column;
+    padding: 1.2rem 1.5rem;
+  }
+  
+  .bulk-editor-actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .bulk-editor-modal {
+    padding: 0.25rem;
+  }
+  
+  .bulk-editor-content {
+    width: 98%;
+    max-height: 95vh;
+  }
+  
+  .bulk-editor-header {
+    padding: 1rem 1.2rem;
+  }
+  
+  .bulk-editor-header h2 {
+    font-size: 1.1em;
+  }
+  
+  .bulk-editor-body {
+    padding: 1rem;
+  }
+  
+  .tech-list {
+    max-height: 250px;
+  }
+  
+  .tech-item {
+    padding: 0.6rem;
+  }
+  
+  .tech-select-label {
+    gap: 0.6rem;
+    padding: 0.4rem;
+  }
+  
+  .tech-title {
+    font-size: 0.9em;
+  }
+  
+  .tech-status {
+    font-size: 0.75em;
+    padding: 3px 6px;
+  }
+}

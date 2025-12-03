@@ -3,7 +3,7 @@ import useTechnologies from '../hooks/useTechnologies';
 import TechnologyForm from '../components/TechnologyForm';
 import './AddTechnology.css';
 
-function AddTechnology() {
+function AddTechnology({ showNotification }) {
   const { technologies, setTechnologies } = useTechnologies();
   const navigate = useNavigate();
 
@@ -17,6 +17,7 @@ function AddTechnology() {
 
     const updatedTechnologies = [...technologies, newTechnology];
     setTechnologies(updatedTechnologies);
+    showNotification(`Технология "${formData.title}" успешно добавлена!`, 'success');
     navigate('/technologies');
   };
 

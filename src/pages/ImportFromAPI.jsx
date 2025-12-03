@@ -4,7 +4,7 @@ import useTechnologyAPI from '../hooks/useTechnologyAPI';
 import useTechnologies from '../hooks/useTechnologies';
 import './ImportFromAPI.css';
 
-function ImportFromAPI() {
+function ImportFromAPI({ showNotification }) {
   const { loading, fetchTechnologies, searchTechnologies } = useTechnologyAPI();
   const { technologies, setTechnologies } = useTechnologies();
   const [apiTechnologies, setApiTechnologies] = useState([]);
@@ -81,7 +81,7 @@ function ImportFromAPI() {
     const updatedTechnologies = [...technologies, ...technologiesToImport];
     setTechnologies(updatedTechnologies);
     setSelectedTechs([]);
-    alert(`✅ Успешно импортировано ${technologiesToImport.length} технологий из GitHub!`);
+    showNotification(`Успешно импортировано ${technologiesToImport.length} технологий из GitHub!`, 'success');
   };
 
   const isAlreadyAdded = (techTitle) => {
